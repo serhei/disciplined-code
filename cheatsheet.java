@@ -55,7 +55,7 @@ assert(numbers.get(1) == 6);
 assert(numbers.get(2) == 7);
 
 numbers.clear(); // -- empty
-// TODOXXX check if numbers is empty
+assert(numbers.isEmpty());
 
 // Linked list:
 List<Integer> numbers = new LinkedList<Integer>();
@@ -84,8 +84,11 @@ for (int i = 5; i <= 8; i++) {
 }
 
 // Queues and stacks:
-Queue<Integer> numbers; // -- supports add(), peek(), remove()
-// TODOXXX Stack<Integer> numbers;
+Queue<Integer> numbers; // -- add(), peek(), remove(), isEmpty()
+Stack<Integer> numbers; // -- push(), peek(), pop(), isEmpty(), search()
+// -- note that remove()-type operations return the value in question
+
+assert(numbers.search(2) == -1); // -- using search to check for obj presence
 
 /////////////////////////////
 // Containers: Maps and Sets
