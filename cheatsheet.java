@@ -30,6 +30,13 @@ double foo = 27.35;
 String word = "hello";
 System.out.printf("$%d hello %s %.2f\n", dollars, word, foo);
 
+// I/O to and from files:
+File f = new File("in.txt");
+Scanner sc = new Scanner(f);
+
+File f = new File("out.txt");
+PrintStream p = new PrintStream(f); // -- works similarly to System.out
+
 ////////////////////////////////////////////
 // Containers: ArrayList, LinkedList, Deque
 
