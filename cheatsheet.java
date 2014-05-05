@@ -6,9 +6,16 @@
 
 // TODOXXX
 
+class Program {
+    public static void main(String[] args) {
+        // ...
+    }
+}
+
 /////////////
 // Basic I/O
 
+import java.io.*;
 import java.util.*;
 
 Scanner sc = new Scanner(System.in);
@@ -31,16 +38,20 @@ String word = "hello";
 System.out.printf("$%d hello %s %.2f\n", dollars, word, foo);
 
 // I/O to and from files:
-File f = new File("in.txt");
+File f = new File("in.txt"); // -- throws FileNotFoundException
 Scanner sc = new Scanner(f);
 
-File f = new File("out.txt");
+File f = new File("out.txt"); // -- throws FileNotFoundException
 PrintStream p = new PrintStream(f); // -- works similarly to System.out
+
+// TODOXXX basic string I/O
 
 ////////////////////////////////////////////
 // Containers: ArrayList, LinkedList, Deque
 
 import java.util.*;
+
+// TODOXXX nonresizable array, get length
 
 // Resizable array:
 List<Integer> numbers = new ArrayList<Integer>();
@@ -98,6 +109,7 @@ import java.util.*;
 // TODOXXX hashtables vs treemaps
 
 Map<String, Integer> days = new TreeMap<String, Integer>();
+Map<String, Integer> days = new HashMap<String, Integer>(n); // default n is 16
 Set<String> daynames = new Set<String>();
 
 // Add elements (maps and sets):
@@ -160,3 +172,5 @@ Collections.sort(vec, new CustomOrder());
 Pt[] ary;
 Arrays.sort(ary);
 Arrays.sort(ary, new CustomOrder());
+
+// TODOXXX heaps, priority queues
