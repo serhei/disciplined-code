@@ -56,9 +56,19 @@ cout << "$" << dollars << " " << word << " world " << foo << endl;
 #include <cstdio>
 printf("$%d hello %s %.2f\n", dollars, word, foo);
 
+// I/O to and from files
+
+#include <fstream>
+ifstream ifs("foo.in"); ifs >> stuff; ifs.close();
+ofstream ofs("foo.out"); of << "foo" << endl; ifs.close();
+ifstream ifs2; ifs2.open("foo.in"); ofstream ofs2; ofs2.open("foo.out");
+// TODOXXX further options
+// TODOXXX detecting end-of-file and stuff
+
 // TODOXXX I/O to and from files -- file object
-// TODOXXX I/O to and from files -- open a stream
 // TODOXXX I/O to and from files -- freopen or similar-for-streams
+
+// I/O to and from string buffers
 
 std::istringstream iss ("2 4 6 8");
 int a, b, c, d; iss >> a >> b >> c >> d;
