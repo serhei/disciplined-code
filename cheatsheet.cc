@@ -91,6 +91,15 @@ cout << o1.str() << endl; // replaced content
 #include <queue>
 #include <stack>
 
+// Fixed-size array:
+int *numbers;
+numbers = new int[40];
+delete[] numbers;
+
+#include <cstdlib>
+numbers = (int *) malloc (40 * sizeof(int));
+free(numbers);
+
 // Resizable array:
 vector<int> numbers; numbers.push_back(5); numbers.push_back(7);
 vector<int> fill(10); // allocate initial size of vector, with default value

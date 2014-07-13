@@ -51,7 +51,10 @@ PrintStream p = new PrintStream(f); // -- works similarly to System.out
 
 import java.util.*;
 
-// TODOXXX nonresizable array, get length
+// Fixed-size array:
+int[] numbers;
+numbers = new int[10];
+System.out.println(numbers.length);
 
 // Resizable array:
 List<Integer> numbers = new ArrayList<Integer>();
