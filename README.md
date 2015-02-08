@@ -1,3 +1,14 @@
 # Serhei's Programming Contest Notes
 
-For now, you probably want the [cheatsheet](cheatsheet.cc).
+## Programming Cheatsheets
+
+- [C++](cheatsheet.cc)
+- [Java](cheatcheet.java)
+
+## Data Structures
+
+- ...
+
+## Algorithms
+
+- ...
