@@ -3,7 +3,7 @@
 ## Programming Cheatsheets
 
 - [C++](cheatsheet.cc)
-- [Java](cheatcheet.java)
+- [Java](cheatsheet.java)
 
 ## Data Structures
 
