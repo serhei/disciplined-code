@@ -1,6 +1,6 @@
 # Predicate Expression Language
 
-In-progress notes on a predicate notation I developed while studying through Dijkstra's *A Discipline of Programming*. The notation is intended for writing predicate expressions in a comfortable way. I plan to gradually evolve my rough sketch closer to a rigorous and complete specification.
+In-progress notes on a predicate notation I developed while studying through Dijkstra's *A Discipline of Programming*. The notation is intended for writing predicate expressions in a comfortable way. I plan to gradually evolve my rough sketch closer to a rigorous and complete language specification.
 
 The syntax is described by an (ambiguous) EBNF grammar. Brackets `[` and `]` signify an optional element. Brackets `{` and `}` signify an element that may be repeated 0 or more times.
 
@@ -99,23 +99,23 @@ A binary operation `a op b` is syntactic sugar for the form application `op a b`
 
 Possible meanings of form application:
 - *Array indexing*, e.g. `ax.i` &ndash; `ax` is an array, `i` is an index.
-- *Method or field reference*, e.g. `ax.val` -- `ax` is a variable, `val` identifies a method or a field of `ax`.
-- *Function or method invocation*, e.g. `f.(a b c)` -- `f` is a global function or a method.
+- *Method or field reference*, e.g. `ax.val` &ndash; `ax` is a variable, `val` identifies a method or a field of `ax`.
+- *Function or method invocation*, e.g. `f.(a b c)` &ndash; `f` is a global function or a method.
 - *Special form*, e.g. a quantifier expression `some.(k : int : a - r = k * d)`.
 
 ## Quantifier Expressions
 
 Existential quantifier with data type:
 
-    some.(k : int : a - r = k * d)
+    some k : int : a - r = k * d
 
 Existential quantifier with predicate:
 
-    some.(k : k >= 0 : a - r = k * d)
+    some k : k >= 0 : a - r = k * d
 
 Universal quantifier with predicate:
 
-    all.(i : 0 <= i <= n : f.i = 6)
+    all i : 0 <= i <= n : f.i = 6
 
 ## Builtin Forms
 
