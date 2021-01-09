@@ -32,18 +32,23 @@ A predicate can be thought of as a function that maps program states to boolean 
 
     + - * / **
     = /= < > <= >=
-    and or
+    and or cand cor =>
     . , : ; NEWLINE ( )
+    true false
 
 Some of these act as binary operators:
 
     BINARY -> '+' | '-' | '*' | '/' | '**' |
               '=' | '/=' | '<' | '>' | '<=' | '>=' |
-              'and' | 'or'
+              'and' | 'or' | 'cand' | 'cor' | '=>'
 
 Others act as delimiters with a special syntax role:
 
     DELIMITER -> '.' | ',' | ':' | ';' | NEWLINE | '(' | ')'
+
+The keywords `true` and `false` are reserved for boolean literals:
+
+    BOOLEAN -> 'true' | 'false'
 
 Newlines are skipped (treated as non-significant whitespace) if they occur in a position where they do not act as a delimiter:
 
@@ -55,6 +60,7 @@ Rough sketch of the grammar:
 
     expr -> INTEGER
     expr -> IDENT
+    expr -> BOOLEAN
     expr -> expr {BINARY expr}
     expr -> '(' expr ')'
     expr -> form
@@ -65,7 +71,7 @@ Binary operators listed in order of decreasing precedence:
     * /
     + -
     = /= < > <= >=
-    and or
+    and or cand cor =>
 
 Comparison operators may be chained, e.g.
 
@@ -103,7 +109,9 @@ Possible meanings of form application:
 - *Function or method invocation*, e.g. `f.(a b c)` &ndash; `f` is a global function or a method.
 - *Special form*, e.g. a quantifier expression `some.(k : int : a - r = k * d)`.
 
-## Quantifier Expressions
+Some special forms accept nested argument lists, e.g. `all.(x, y : 0 <= x, x <= y : foo.x, bar .y)`
+
+## Quantifier and Comprehension Expressions
 
 Existential quantifier with data type:
 
@@ -117,10 +125,23 @@ Universal quantifier with predicate:
 
     all i : 0 <= i <= n : f.i = 6
 
+Count the elements satisfying a predicate or list of predicates:
+
+    count i : 0 <= i < r : match i
+
+Minimum and maximum of a set:
+
+    min i : 0 < i <= j : dif.(i j) = false
+    max i : 0 < i <= j : dif.(i j) = false
+
+Each element of a quantifier can be a nested argument list:
+
+    all x, k : 0 < x <= i, x < k < N, shift.(x k) : k <= d.hib, d.k <= x
+
 ## Builtin Forms
 
-- Logical negation `non.P`.
-- Integer modulus `mod.(a d)`.
+- Logical negation `non P`.
+- Integer modulus `mod a d`.
 
 ## Labeled Predicates
 
@@ -139,3 +160,4 @@ Examples:
     R: 0 <= k < n and all.(i : 0 <= i < n : f.k >= f.i)
     R.1: 0 <= r < d and some.(k : int : a - r = k * d)
     P2: 1 <= k <= n and r < s + fact.k and mod.(s fact.k) = 0
+    dif i k: some j : 0 <= k < k-i : p.j /= p.(i+j)
