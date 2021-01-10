@@ -20,9 +20,9 @@ A predicate can be thought of as a function that maps program states to boolean 
 
 ## Vocabulary
 
-**Identifiers** are sequences of letters, digits, hyphen `-` and underscore `_`. The first character must be a letter.
+**Identifiers** are sequences of letters, digits, hyphen `-` and underscore `_`, which may be postfixed by an optional sequence of one or more prime `'` symbols. The first character must be a letter.
 
-    IDENT -> LETTER {LETTER | DIGIT | '-' | '_'}
+    IDENT -> LETTER {LETTER | DIGIT | "-" | "_"} {"'"}
 
 **Numbers** are signed integers.
 
@@ -109,7 +109,10 @@ Possible meanings of form application:
 - *Function or method invocation*, e.g. `f.(a b c)` &ndash; `f` is a global function or a method.
 - *Special form*, e.g. a quantifier expression `some.(k : int : a - r = k * d)`.
 
-Some special forms accept nested argument lists, e.g. `all.(x, y : 0 <= x, x <= y : foo.x, bar .y)`
+Some special forms accept nested argument lists, e.g.
+
+    all x', y': x' >= y' >= 0, x' >= y' >= 0, x' > x, y' > y:
+       x'**2 + y'**2 = r => some.(i : xs.i = x', ys.i = y')
 
 ## Quantifier and Comprehension Expressions
 
