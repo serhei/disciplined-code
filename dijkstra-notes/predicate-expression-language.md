@@ -111,7 +111,7 @@ Possible meanings of form application:
 
 Some special forms accept nested argument lists, e.g.
 
-    all x', y': x' >= y' >= 0, x' >= y' >= 0, x' > x, y' > y:
+    all x', y' : x' >= y' >= 0, x' >= y' >= 0, x' > x, y' > y :
        x'**2 + y'**2 = r => some.(i : xs.i = x', ys.i = y')
 
 ## Quantifier and Comprehension Expressions
