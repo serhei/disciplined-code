@@ -1,8 +1,8 @@
 # Predicate Expression Language
 
-In-progress notes on a predicate notation I developed while studying through Dijkstra's *A Discipline of Programming*. The notation is intended for writing predicate expressions in a comfortable way. I plan to gradually evolve my rough sketch closer to a rigorous and complete language specification.
+This document presents in-progress notes on a predicate notation I developed while studying through Edsger W. Dijkstra's *A Discipline of Programming*. The notation is intended for writing predicate expressions in a comfortable way. My plan is to gradually evolve this rough sketch into a rigorous and complete language specification.
 
-The syntax is described by an (ambiguous) EBNF grammar. Brackets `[` and `]` signify an optional element. Brackets `{` and `}` signify an element that may be repeated 0 or more times.
+Aspects of this specification are modeled on the [Oberon 2007 Report](https://people.inf.ethz.ch/wirth/Oberon/Oberon07.Report.pdf).
 
 ## Basic Definitions
 
@@ -18,17 +18,22 @@ A *predicate* is a boolean-valued predicate expression.
 
 A predicate can be thought of as a function that maps program states to boolean values `true` and `false`. A predicate function can also be thought of as the subset of program states that satisfy the predicate (i.e. the set of states on which the predicate evaluates to `true`).
 
-## Vocabulary
+## Syntax and Lexical Vocabulary
+
+The syntax is described by an ambiguous EBNF grammar. Within grammar productions, brackets `[` and `]` enclose an optional element while brackets `{` and `}` enclose an element that may be repeated 0 or more times.
+
+Permitted lexical symbols include identifiers, numbers, operators, delimiters, reserved keywords, newlines, whitespace characters, and comments.
 
 **Identifiers** are sequences of letters, digits, hyphen `-` and underscore `_`, which may be postfixed by an optional sequence of one or more prime `'` symbols. The first character must be a letter.
 
     IDENT -> LETTER {LETTER | DIGIT | "-" | "_"} {"'"}
 
-**Numbers** are signed integers.
+**Numbers** are signed decimal integers.
 
     INTEGER -> ["-"] DIGIT {DIGIT}
 
-**Operators** and **delimiters** are any of the special character sequences listed or reserved identifiers listed below:
+
+**Operators** and **delimiters** are any of the special character sequences or reserved identifiers listed below:
 
     + - * / **
     = /= < > <= >=
@@ -50,9 +55,11 @@ The keywords `true` and `false` are reserved for boolean literals:
 
     BOOLEAN -> 'true' | 'false'
 
-Newlines are skipped (treated as non-significant whitespace) if they occur in a position where they do not act as a delimiter:
+**Newlines** are ignored unless they occur in a position where they act as a delimiter:
 
     (empty) -> NEWLINE
+
+**Whitespace characters** and **comments** are always ignored. They may be used to separate consecutive symbols. ...
 
 ## Predicate Expressions
 
