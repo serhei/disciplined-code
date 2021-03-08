@@ -39,12 +39,12 @@ def match_basic_s1(p, x)
   j, nmatch = 0, 0
   # @let P: nmatch = count i : 0 <= i <= M-N : matchAt(i)
   # @{P} # <- XXX enter in IDE to quickly check initialization, then delete
-  while j < x.length - p.length
+  while j <= x.length - p.length
     # @loop P, @inc j < x.length-p.length
     "check if matchAt(j) is true and increment count" # @TODO
     # @{P.[j->j+1]}
     j += 1
-  end # @{P and j >= N-M} => {R}
+  end # @{P and j > N-M} => {R}
   return nmatch
 end
 
