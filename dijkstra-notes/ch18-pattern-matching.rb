@@ -37,21 +37,21 @@ end
 # Step I
 def match_basic_s1(p, x)
   j, nmatch = 0, 0
-  # @let P: nmatch = count i : 0 <= i <= M-N : matchAt(i)
+  # @let P: nmatch = count i : 0 <= i < j : matchAt(i)
   # @{P} # <- XXX enter in IDE to quickly check initialization, then delete
   while j <= x.length - p.length
     # @loop P, @inc j < x.length-p.length
     "check if matchAt(j) is true and increment count" # @TODO
     # @{P.[j->j+1]}
     j += 1
-  end # @{P and j > N-M} => {R}
+  end # @{P and j > M-N} => {R}
   return nmatch
 end
 
 # Step II
 def match_basic(p, x)
   j, nmatch = 0, 0
-  # @loop P: nmatch = count i : 0 <= i <= M-N : matchAt(i)
+  # @loop P: nmatch = count i : 0 <= i < j : matchAt(i)
   while j <= x.length - p.length
     # check if matchAt(j) is true and increment count
     k, matches = 0, true
@@ -69,7 +69,7 @@ end
 # Step II, XXX examples of off-by-one errors to be caught by checker
 def match_basic_err(p, x)
   j, nmatch = 0, 0
-  # @loop P: nmatch = count i : 0 <= i <= M-N : matchAt(i)
+  # @loop P: nmatch = count i : 0 <= i < j : matchAt(i)
   while j < x.length - p.length # XXX err1 off-by-one error
     # check if matchAt(j) is true and increment count
     k, matches = 0, true
@@ -81,7 +81,7 @@ def match_basic_err(p, x)
     end # @{Q and k >= p.length} => matchAt(j)
     nmatch += 1 if matches
     j += 1
-  end # @{P and j > N-M} => {R} # XXX implicit conclusion, failed by err1
+  end # @{P and j > M-N} => {R} # XXX implicit conclusion, failed by err1
   return nmatch
 end
 # XXX example of off-by-one error in matchAt() predicate DEFINITION:
