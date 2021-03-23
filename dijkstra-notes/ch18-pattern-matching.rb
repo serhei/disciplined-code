@@ -1,3 +1,5 @@
+# Example from Chapter 18 of Dijkstra's "A Discipline of Programming".
+
 # XXX Currently assumed and alternative annotation keywords:
 #
 # * Solver assertion +@{...}+ (+=>+)
