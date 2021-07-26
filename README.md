@@ -12,7 +12,7 @@ a low probability of programmer error. These skills include:
 - top-down refinement to break down a problem into smaller pieces
 - judicious use of predicates and weakest-precondition semantics to
   guide the development of a solution
-- layered architecture for larger systems (cf [THE 1968](https://www.eecs.ucf.edu/~eurip/papers/dijkstra-the68.pdf))
+- use of layered architecture for larger systems (cf ['THE' 1968](https://www.eecs.ucf.edu/~eurip/papers/dijkstra-the68.pdf))
 
 Long-term, I have some interest in developing new kinds of developer
 tools to better support disciplined programming. Short-term, I want to
