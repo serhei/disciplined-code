@@ -1,0 +1,19 @@
+-- commented lines solve ../sample-problems/LeetCode-60-Maximum-Depth-of-Binary-Tree.md
+-- max-depth: begin def m, use root, loc next:
+min-depth: begin def m, use root, loc next, found-leaf:
+  m var int := 0; next var list.node := (root)
+  found-leaf var bool := false
+  -- do: next.dom > 0 ->
+  do: non found-leaf and next.dom > 0 ->
+    m := m + 1
+    begin mod next, loc children, k:
+      k var int := next.lob - 1; children var list.node := ()
+      -- do: k < next.hib ->
+      do: non found-leaf and k < next.hib:
+        k := k + 1
+        when: next.k.left /= none -> children:hiext next.k.left :when
+        when: next.k.right /= none -> children:hiext next.k.right :when
+        when: next.k.left = next.k.right = none -> found-leaf := true :when
+      :do
+      next := children
+:max-depth

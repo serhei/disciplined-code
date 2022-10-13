@@ -1,0 +1,20 @@
+max-depth: begin def m, use root, loc path, dir, m:
+  path var list.node := (root)
+  dir var list.enum.(L,R,X) := (L)
+  m var int := 1
+  do: path.dom > 0 ->
+    when:
+      dir.high = L and path.high.left /= none ->
+        dir:hialt R; dir:hiext L; path:hiext path.high.left
+      dir.high = L and path.high.left = none ->
+        dir:hialt R
+    :when
+    when:
+      dir.high = R and path.high.right /= none ->
+        dir:hialt X; dir:hiext L; path:hiext path.high.right
+      dir.high = R and path.high.right = none ->
+        dir:hialt R
+    :when
+    do: dir.high = X -> dir:hipop; path:hipop :do
+    when: path.dom > m -> m := path.dom :when
+:max-depth
