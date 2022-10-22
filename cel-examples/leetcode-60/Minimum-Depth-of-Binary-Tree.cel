@@ -1,4 +1,4 @@
--- commented lines solve ../sample-problems/LeetCode-60-Maximum-Depth-of-Binary-Tree.md
+-- commented lines solve ../../sample-problems/leetcode-60/Maximum-Depth-of-Binary-Tree.md
 -- max-depth: begin def m, use root, loc next:
 min-depth: begin def m, use root, loc next, found-leaf:
   m var int := 0; next var list.node := (root)

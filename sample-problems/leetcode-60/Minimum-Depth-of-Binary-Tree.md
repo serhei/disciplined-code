@@ -16,10 +16,10 @@ when `root == nullptr` and so the depth is `0`.)
 
 ## Solution
 
-(Adapt the code from the [breadth-first search solution](LeetCode-60-Maximum-Depth-of-Binary-Tree#breadth-first) of the
+(Adapt the code from the [breadth-first search solution](Maximum-Depth-of-Binary-Tree.md#breadth-first) of the
 problem '*Maximum Depth of Binary Tree*', as specified in the linked
 problem writeup.)
 
-**Cel Solution:** <../cel-examples/LeetCode-60-Minimum-Depth-of-Binary-Tree.cel>  
-**C++ Solution:** <../c++-examples/LeetCode-60-Minimum-Depth-of-Binary-Tree.cxx>  
+**Cel Solution:** [`Minimum-Depth-of-Binary-Tree.cel`](../../cel-examples/leetcode-60/Minimum-Depth-of-Binary-Tree.cel)  
+**C++ Solution:** [`Minimum-Depth-of-Binary-Tree.cxx`](../../c++-examples/leetcode-60/Minimum-Depth-of-Binary-Tree.cxx)  
 **LeetCode Submission:** <https://leetcode.com/submissions/detail/811491239/> <!-- TODO: from old account; needs cleanup -->

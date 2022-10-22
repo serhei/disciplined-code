@@ -65,15 +65,15 @@ so forth.)
 
     6: {3pop}: do: dir.high = X -> dir:hipop; path:hipop :do
 
-**Cel Solution:** <../cel-examples/LeetCode-60-Maximum-Depth-of-Binary-Tree-DFS.cel>  
-**C++ Solution:** <../c++-examples/LeetCode-60-Maximum-Depth-of-Binary-Tree-DFS.cxx>  
+**Cel Solution:** [`Maximum-Depth-of-Binary-Tree-DFS.cel`](../../cel-examples/leetcode-60/Maximum-Depth-of-Binary-Tree-DFS.cel)  
+**C++ Solution:** [`Maximum-Depth-of-Binary-Tree-DFS.cxx`](../../c++-examples/leetcode-60/Maximum-Depth-of-Binary-Tree-DFS.cxx)  
 **LeetCode Submission:** <https://leetcode.com/submissions/detail/811443416/> <!-- TODO: from old account; needs cleanup -->
 
 ## Solution based on Breadth-First Search
 <a name="breadth-first" />
 
 My second solution based on breadth-first search and two arrays can
-also be adapted to the related [*Minimum Depth of Binary Tree*](LeetCode-60-Minimum-Depth-of-Binary-Tree.md)
+also be adapted to the related [*Minimum Depth of Binary Tree*](Minimum-Depth-of-Binary-Tree.md)
 problem, as described below:
 
     0: max-depth: begin def m, use root, loc next:
@@ -104,8 +104,8 @@ instead read `do: non found-leaf and k < next.hib` and the line marked
 
     when: next.k.left = next.k.right = none -> found-leaf := true :when
 
-**Cel Solution:** <../cel-examples/LeetCode-60-Maximum-Depth-of-Binary-Tree.cel>  
-**C++ Solution:** <../c++-examples/LeetCode-60-Maximum-Depth-of-Binary-Tree.cxx>  
+**Cel Solution:** [`Maximum-Depth-of-Binary-Tree.cel`](../../cel-examples/leetcode-60/Maximum-Depth-of-Binary-Tree.cel)  
+**C++ Solution:** [`Maximum-Depth-of-Binary-Tree.cxx`](../../c++-examples/leetcode-60/Maximum-Depth-of-Binary-Tree.cxx)  
 **LeetCode Submission:** <https://leetcode.com/submissions/detail/811491239/> <!-- TODO: from old account; needs cleanup -->
 
 ## **TODO** Other Ideas to Try
