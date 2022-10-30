@@ -2,7 +2,7 @@
 class Solution {
 public:
   TreeNode *buildTree(vector<int>& preorder, vector<int>& inorder) {
-    // {2nodes}="build an array nodes with elements of type node matching the elements in preorder":
+    // {2nodes}="build an array nodes with elements of type TreeNode* matching the elements in preorder":
     TreeNode* nodes[preorder.size()];
     for (unsigned k = 0; k < preorder.size(); k++) {
       nodes[k] = new TreeNode(preorder[k]);
