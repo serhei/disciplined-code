@@ -1,0 +1,30 @@
+is-closing: fn c -> c in {')', '}', ']'}
+opener: fn ')' -> '(', '}' -> '{', ']' -> '['
+
+valid-parens: begin def valid, use s,
+                    loc valid-end, i, fin, parens:
+  valid-end var int := s.lob-1
+  i var int := s.lob-1
+  fin var int := false
+  parens var list.int := ()
+  P1: "s.(lob..i) could be part of a valid prefix"
+  P2: "s.(lob..valid-end) is the longest valid prefix of s.(lob..i)"
+  P3: fin => "s.(lob..i+1) could not be part of a valid prefix"
+  P4: "parens gives the indices of unclosed parens in s.(lob..i)"
+  do [P1,P2,P3,P4]: i < s.hib and non fin ->
+    begin use s, mod valid-end, i, fin, parens, loc lc, nc:
+      nc var char := s.(i+1)
+      lc char maybe.int := maybe.s.(parens.high)
+      if: non is-closing.nc ->
+            parens:hiext i + 1; i := i + 1
+          parens.empty and is-closing.nc ->
+            fin := true
+          non parens.empty and is-closing.nc and lc = opener.nc ->
+            parens:hirem; i := i + 1
+          non parens.empty and is-closing.nc and lc /= opener.nc ->
+            fin := true
+      :if
+      when: parens.empty -> valid-end := i :when
+  :do
+  valid var bool := valid-end = s.hib
+:valid-parens
