@@ -1,0 +1,6 @@
+rev-list: begin def rhead, use head, loc this:
+  rhead var maybe.node := none
+  this var node := head
+  do: this /= none ->
+    rhead, this := node/make.(val=this.val, next=rhead), this.next
+:rev-list

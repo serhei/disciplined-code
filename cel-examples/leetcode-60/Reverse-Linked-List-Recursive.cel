@@ -1,0 +1,11 @@
+rev-list: begin def rhead, use head:
+  rhead var maybe.node := none
+  rhead:rev-list-worker.(head=head)
+:rev-list
+rev-list-worker: begin mod rhead, use head:
+  if:
+    head = none -> skip
+    head /= none ->
+      rhead := node/make.(val=head.val, next=rhead)
+      rhead:rev-list-worker.(head=head.next)
+:rev-list-worker
