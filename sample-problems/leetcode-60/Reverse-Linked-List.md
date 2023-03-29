@@ -17,18 +17,20 @@ problem both iteratively and recursively.)
 
 ## Iterative Solution
 
-Repeatedly transfer a node from `head` to the (incomplete) reversed list:
+**1.** Repeatedly transfer a node from `head` to the (incomplete)
+reversed list:
 
-    0: rev-list: begin def rhead, use head, loc this:
+    rev-list: begin def rhead, use head, loc this:
       rhead var maybe.node := none
       this var node := head
       do: this /= none ->
-        {0rev}="convert this into an equivalent node at the front of the (incomplete) reversed list; replace this with this.next"
-    :0
+        {1rev convert this into an equivalent node at the front of the (incomplete) reversed list;
+              replace this with this.next}
+    :rev-list
     
-    1: {0rev}:
+    {1rev convert this into an equivalent node}:
       rhead, this := node/make.(val=this.val, next=rhead), this.next
-    :1
+    :1rev
 
 **Cel Solution:** [`Reverse-Linked-List.cel`](../../cel-examples/leetcode-60/Reverse-Linked-List.cel)  
 **C++ Solution:** [`Reverse-Linked-List.cxx`](../../c++-examples/leetcode-60/Reverse-Linked-List.cxx)  
@@ -36,39 +38,41 @@ Repeatedly transfer a node from `head` to the (incomplete) reversed list:
 
 ## Recursive Solution
 
-Converted from the iterative solution, initial false start:
+**1fs.** Converted from the iterative solution, initial false start:
 
-    #.0fs: rev-list: begin def rhead, use head:
-      {0rec}="construct reversed head.next with head.val as the last node"
-    :0fs
+    #.rev-list: begin def rhead, use head:
+      {1rec construct reversed head.next with head.val as the last node}
+    :end
 
-Converted from the iterative solution:
+**1.** Converted from the iterative solution:
     
-    0: rev-list: begin def rhead, use head:
-      {0rec}="construct reversed head with none as the suffix"
-    :0
+    rev-list: begin def rhead, use head:
+      {1rec construct reversed head with none as the suffix}
+    :end
 
-Introduce a recursive helper generalizing `{0rec}` to different suffixes:
+**2.** Introduce a recursive helper generalizing `{1rec}` to different
+suffixes:
 
-    1a: {0rec}:
+    {1rec}:
       rhead var maybe.node := none
       rhead:rev-list-worker.(head=head)
-    :1a
-    1b: rev-list-worker: begin mod rhead, use head:
-      {1rec}="construct reversed head with rhead as the suffix"
-    :1b
+    :1rec
 
-Proceed by cases:
+    rev-list-worker: begin mod rhead, use head:
+      {2rec construct reversed head with rhead as the suffix}
+    :end
 
-    2: {1rec}: if:
+**3.** Proceed by cases:
+
+    {2rec}: if:
       head = none -> skip
-      head /= none -> {2rec}="construct reversed head.next with (head.val, rhead, ...) as the suffix"
-    :2
-    
-    3: {2rec}:
+      head /= none -> {3rec construct reversed head.next with (head.val, rhead, ...) as the suffix}
+    :2rec
+
+    {3rec construct reversed head.next}:
       rhead := node/make.(val=head.val, next=rhead)
       rhead:rev-list-worker.(head=head.next)
-    :3
+    :3rec
 
 **Cel Solution:** [`Reverse-Linked-List-Recursive.cel`](../../cel-examples/leetcode-60/Reverse-Linked-List-Recursive.cel)  
 **C++ Solution:** [`Reverse-Linked-List-Recursive.cxx`](../../c++-examples/leetcode-60/Reverse-Linked-List-Recursive.cxx)  
